@@ -3,27 +3,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Rohith Saranga</title>
-    <style>
-        body{
-            margin:0;
-        }
-        #back{
-            height:250px;
-            width:100%;
-            background-color: black;
-            text-align: center;
-        }
-        h1{
-            color: azure;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
-        }
-    </style>
 </head>
 <body>
-    <div id="back">
-        <h1>Hello, I am Rohith</h1>
+    <script>
+        var func = ()=>{
+            var email = document.querySelector(".email").value;            
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "http://localhost:80/firstproj/subscribe.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            xmlhttp.send("email="+email);
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status==200){
+                    document.querySelector("footer p").innerHTML = this.responseText;
+                    console.log(this.responseText);
+                    console.log("yes");
+                    
+                }
+            };
+        }
+    
+    </script>
+
+
+    <div id="top_div">
+        <h1>Rohith Saranga</h1>
     </div>
+    <div id="mid_div">
+        <div class="form">
+            <input type="text" name="email" class="email">
+            <input type="button" value="subscribe" onclick="func()">
+        </div>
+    </div>
+    <footer>
+        <p>copyright 2019</p>
+    </footer>
 
 </body>
 </html>
